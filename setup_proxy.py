@@ -73,7 +73,7 @@ def parse_services():
             file = Path(service, "docker-compose.yaml")
 
         with open(file, "r") as fs:
-            ymlfile = yaml.load(file)
+            ymlfile = yaml.load(fs)
 
         services_dict[service.stem] = {"path": str(service.resolve()), "containers": {}}
 
@@ -124,7 +124,7 @@ def edit_services():
             file = Path(services_dict[service]["path"], "docker-compose.yaml")
 
         with open(file, "r") as fs:
-            ymlfile = yaml.load(file)
+            ymlfile = yaml.load(fs)
 
         for container in services_dict[service]["containers"]:
             try:
